@@ -12,11 +12,22 @@ class JobPostingController extends Controller
     public function index(Request $request)
     {
         $query = JobPosting::query();
-
+ 
+        //filter by job category
         if ($request->has('category')) {
             $query->where('category', $request->input('category'));
         }
 
+        //filter by job location
+        if ($request->has('location')) {
+            $query->where('location', $request->input('location'));
+        }
+ //filter by job title
+        if ($request->has('title')) {
+            $query->where('title', $request->input('title'));
+        }
+
+        //filter by salary range
         if ($request->has('salary_min')) {
             $query->where('salary', '>=', $request->input('salary_min'));
         }
@@ -25,9 +36,9 @@ class JobPostingController extends Controller
             $query->where('salary', '<=', $request->input('salary_max'));
         }
 
-        $jobPostings = $query->get();
+        $Postings = $query->get();
 
-        return response()->json($jobPostings);
+        return response()->json($Postings);
     }
 
     /**
@@ -44,24 +55,24 @@ class JobPostingController extends Controller
             'category' => 'required',
         ]);
 
-        $jobPosting = JobPosting::create($request->all());
+        $Posting = JobPosting::create($request->all());
 
-        return response()->json($jobPosting, 201); // Return created job posting with 201 status
+        return response()->json($Posting, 201); // Return created job posting with 201 status
     }
 
     /**
      * Display the specified listing with the applications.
      */
-    public function show(JobPosting $jobPosting)
+    public function show(JobPosting $Posting)
     {
-        $jobPosting->load('applications'); // Load applications for the job
-        return response()->json($jobPosting);
+        $Posting->load('applications'); // Load applications for the job
+        return response()->json($Posting);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JobPosting $jobPosting)
+    public function update(Request $request, JobPosting $Posting)
     {
         $request->validate([
             'title' => 'required|max:255', // Fixed validation rule
@@ -72,17 +83,17 @@ class JobPostingController extends Controller
             'category' => 'required',
         ]);
 
-        $jobPosting->update($request->all()); // Update the job posting
+        $Posting->update($request->all()); // Update the job posting
 
-        return response()->json($jobPosting); // Return updated job posting
+        return response()->json($Posting); // Return updated job posting
     }
 
     /**
      * Remove the specified job listing from storage.
      */
-    public function destroy(JobPosting $jobPosting)
+    public function destroy(JobPosting $Posting)
     {
-        $jobPosting->delete(); // Delete the job posting
+        $Posting->delete(); // Delete the job posting
 
         return response()->json(null, 204); // Return no content response
     }
