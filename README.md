@@ -3,10 +3,10 @@
 ## 🚀 Features
 
 - ✅ Register, Login & Logout
-- 📋 Job Listing CRUD
-- 🔐 Authentication & Authorization before applying to a job
-- 📌 List all jobs
-- ✍️ Apply to a job (Login required)
+- 📋 Job Listing CRUD ( Authentication & Authorization required!)
+- 📌 Filter job listing according to salary, category, location and job title. ( Authentication & Authorization required!)
+- ✍️ Apply to a job (( Authentication & Authorization required!)
+- Job applications CRUD (( Authentication & Authorization required!)
 
 ---
 
