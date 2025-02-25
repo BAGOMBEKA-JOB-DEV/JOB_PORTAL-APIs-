@@ -1,24 +1,35 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\JobController;
+use App\Http\Controllers\JobPostingController;
+use App\Http\Controllers\JobApplicationController;
 
 
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+Route::middleware('auth:sanctum')->group(function () {
+    // JobPosting routes
+    Route::get('/job-listings', [JobPostingController::class, 'index']);
+    Route::post('/job-listings', [JobPostingController::class, 'store']);
+    Route::get('/job-listings/{jobPosting}', [JobPostingController::class, 'show']);
+    Route::put('/job-listings/{jobPosting}', [JobPostingController::class, 'update']);
+    Route::delete('/job-listings/{jobPosting}', [JobPostingController::class, 'destroy']);
 
-                        //job apis
-//for storing data in the jobs table
-Route::post('/job', [JobController::class, 'store']);
-//for fetching data in the jobs table
-Route::get('/jobs', [JobController::class, 'index']);
-//for updating the data in the jobs table
-Route::put('/job/{id}', [JobController::class, 'update']);
-//for deleting the data in the jobs table
-Route::delete('/job/{id}', [JobController::class, 'destroy']);
+    // JobApplication routes
+    Route::get('/applications', [JobApplicationController::class, 'index']);
+    Route::post('/apply', [JobApplicationController::class, 'store']);
+    Route::get('/applications/{jobApplication}', [JobApplicationController::class, 'show']);
+    Route::put('/applications/{jobApplication}', [JobApplicationController::class, 'update']);
+    Route::delete('/applications/{jobApplication}', [JobApplicationController::class, 'destroy']);
+
+    // Logout route
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
 
 
-
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
