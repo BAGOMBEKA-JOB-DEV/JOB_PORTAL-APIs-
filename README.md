@@ -43,7 +43,7 @@ php artisan migrate
 php artisan serve
 ```
 
-### 🎨 Run Vite (For Front-End)
+### 🎨 Run Vite (For Front-End (Only Register and Login))
 ```bash
 php artisan serve
 ```
@@ -125,6 +125,44 @@ POST http://127.0.0.1:8000/api/job-listings
 ```http
 GET http://127.0.0.1:8000/api/job-listings
 ```
+**Response:**
+```json
+[
+    {
+        "id": 1,
+        "title": "Software Engineer",
+        "description": "We are looking for a skilled software engineer to join our team and work on cutting-edge projects.",
+        "company": "Tech Innovations Ltd.",
+        "location": "Kampala, Uganda",
+        "salary": 50000,
+        "category": "Software Development",
+        "created_at": "2025-02-25T08:35:32.000000Z",
+        "updated_at": "2025-02-25T08:35:32.000000Z"
+    },
+    {
+        "id": 2,
+        "title": "Software Engineer",
+        "description": "We are looking for a skilled software engineer to join our team and work on cutting-edge projects.",
+        "company": "Tech Innovations Ltd.",
+        "location": "Kampala, Uganda",
+        "salary": 50000,
+        "category": "Software Development",
+        "created_at": "2025-02-25T08:35:37.000000Z",
+        "updated_at": "2025-02-25T08:35:37.000000Z"
+    },
+    {
+        "id": 3,
+        "title": "Accountant",
+        "description": "We are looking for a skilled accountant to join our team and work on cutting-edge projects.",
+        "company": "SMSONE.",
+        "location": "Kampala, Uganda",
+        "salary": 700000,
+        "category": "Accountanting",
+        "created_at": "2025-02-25T11:08:48.000000Z",
+        "updated_at": "2025-02-25T11:08:48.000000Z"
+    }
+]
+```
 
 ### 📩 Apply to a Job (POST) (Auth Required)
 ```http
@@ -154,6 +192,29 @@ POST http://127.0.0.1:8000/api/apply
 ```http
 GET http://127.0.0.1:8000/api/applications
 ```
+**Response :**
+```json
+[
+    {
+        "id": 1,
+        "user_id": 2,
+        "job_id": 2,
+        "cover_letter": "hello there....",
+        "status": "pending",
+        "created_at": "2025-02-25T09:46:32.000000Z",
+        "updated_at": "2025-02-25T09:46:32.000000Z"
+    },
+    {
+        "id": 2,
+        "user_id": 4,
+        "job_id": 3,
+        "cover_letter": "Hello there, am applying for the role of accountant at your company! Thanks",
+        "status": "pending",
+        "created_at": "2025-02-25T11:20:25.000000Z",
+        "updated_at": "2025-02-25T11:20:25.000000Z"
+    }
+]
+```
 
 ---
 
@@ -162,6 +223,7 @@ GET http://127.0.0.1:8000/api/applications
 - **Filter by Category**: `GET http://127.0.0.1:8000/api/job-listings?category=Accounting`
 - **Filter by Salary**: `GET http://127.0.0.1:8000/api/job-listings?salary=70000`
 - **Filter by Location**: `GET http://127.0.0.1:8000/api/job-listings?location=Kampala`
+- **Filter by job title**: `GET http://127.0.0.1:8000/api/job-listings?title=Accountant`
 
 ---
 
