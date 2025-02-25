@@ -1,12 +1,14 @@
 # Laravel Job Portal API
-
-This is a job listing api built with Laravel 11
+SIMPLE JOB PORTAL LARAVEL API
 
 ## Features
 
+-   Register, Login && Logout
 -   Job Listing CRUD
--   Authentication & Authorization Policies
--   Apply to jobs listed
+-   Authentication & Authorization before applying to a job!!!
+-   List all jobs 
+-   Apply  to  a job when you need to first log in.
+
 
 ## Usage
 
@@ -43,4 +45,10 @@ Run:
 php artisan serve
 ```
 
-Open http://localhost:8000
+Run Vite(for front-end):
+
+```
+php artisan serve
+```
+
+Open http://localhost:8000 or any other url provided by your local machine
