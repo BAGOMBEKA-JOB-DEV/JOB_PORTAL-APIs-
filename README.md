@@ -28,6 +28,11 @@ DB_USERNAME=
 DB_PASSWORD=
 ```
 
+###  Generate APP Key
+```bash
+php artisan key:generate
+```
+
 ### 📂 Run Migrations
 ```bash
 php artisan migrate
