@@ -12,8 +12,8 @@ class JobApplicationController extends Controller
      */
     public function index()
     {
-        $jobApplications = JobApplication::all();
-        return response()->json($jobApplications);
+        $Applications = JobApplication::all();
+        return response()->json($Applications);
     }
 
     /**
@@ -27,23 +27,23 @@ class JobApplicationController extends Controller
             'cover_letter' => 'required'
         ]);
 
-        $jobApplication = JobApplication::create($request->all());
+        $Application = JobApplication::create($request->all());
 
-        return response()->json($jobApplication, 201);
+        return response()->json($Application, 201);
     }
 
     /**
      * Display a specific job application
      */
-    public function show(JobApplication $jobApplication)
+    public function show(JobApplication $Application)
     {
-        return response()->json($jobApplication);
+        return response()->json($Application);
     }
 
     /**
      * Update a specific job posting in storage.
      */
-    public function update(Request $request, JobApplication $jobApplication)
+    public function update(Request $request, JobApplication $Application)
     {
         $request->validate([
             'job_posting_id' => 'required|exists:job_postings,id',
@@ -52,17 +52,17 @@ class JobApplicationController extends Controller
             'status' => 'required',
         ]);
 
-        $jobApplication->update($request->all());
+        $Application->update($request->all());
 
-        return response()->json($jobApplication);
+        return response()->json($Application);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JobApplication $jobApplication)
+    public function destroy(JobApplication $Application)
     {
-        $jobApplication->delete();
+        $Application->delete();
 
         return response()->json(null, 204);
     }
