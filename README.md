@@ -5,8 +5,8 @@
 - ✅ Register, Login & Logout
 - 📋 Job Listing CRUD (  Authorization token required!)
 - 📌 Filter job listing according to salary, category, location and job title. (  Authorization token required!)
-- ✍️ Apply to a job (( Authorization token required!)
-- Job applications CRUD ((  Authorization  token required!)
+- ✍️ Apply to a job ( Authorization token required!)
+- Job applications CRUD (  Authorization  token required!)
 
 ---
 
