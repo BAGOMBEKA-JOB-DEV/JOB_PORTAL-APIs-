@@ -227,5 +227,5 @@ GET http://127.0.0.1:8000/api/applications
 
 ---
 
-🚀 **** 🎉
+Happy Coding!!!!. Please ensure to give me credit in case you clone or fork this project. You didn't code it, I did!!!!!!
 
